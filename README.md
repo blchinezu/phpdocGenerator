@@ -1,2 +1,2 @@
 # phpdocGenerator
-An interface for generating documentation with phpDocumentor 2
+A web interface for generating documentation with phpDocumentor 2
