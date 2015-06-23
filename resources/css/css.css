@@ -1,0 +1,551 @@
+/* =================================== HTML / BODY =================================== */
+    html, body {
+        margin: 0px;
+        padding: 0px;
+        border: 0px;
+        font: 14px "MyriadPro-Regular",Helvetica,Arial,sans-serif;
+        color: #3A4D81;
+    }
+
+
+/* =================================== GENERAL =================================== */
+    a img   {border: 0px;}
+    pre     {font-size: 11px;}
+
+    .GREEN  {color: green;}
+    .RED    {color: red;}
+    .YELLOW {color: yellow;}
+
+    .center     {text-align: center;}
+
+    .fleft      {float: left;}
+    .fright     {float: right;}
+    .fHeight    {clear: both;}
+    
+    .absolute   {position: relative;}
+    .hidden     {display:none;}
+    .invisible  {visibility:hidden;}
+    .clickable  {cursor:pointer;}
+    .hand       {cursor:pointer;}
+
+    a, .link                {color: #FE952A;text-decoration: none;font-weight: bold;cursor:pointer;}
+    a:hover, .link:hover    {text-decoration: underline;}
+    a.normal                {color: blue;text-decoration: underline;}
+
+    div.paginaCentru {width:100%;text-align: center;}
+
+
+/* =================================== FONTURI =================================== */
+
+    @font-face {
+        font-family: MyriadPro-Regular;
+        src: url("../font/MyriadPro-Regular.otf") format("opentype");
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+html {
+    text-align: center;
+    background: url("../img/general-background.jpg") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    color: #617EA1;
+}
+
+body {
+    margin: 20px auto;
+    background: #FFFFFF;
+    padding: 20px;
+    border: 1px solid #E4E4E4;
+    width: 1200px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a:hover {
+    color: #617EA1;
+}
+
+.hidden {
+    display: none;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.noTextSelect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* ICONS */
+    .icon {
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+        display: inline-block;
+    }
+    .icon:hover {
+        opacity: .9;
+    }
+
+/* TABLE */
+    table {
+        border-spacing: 0;
+    }
+
+/* INPUT */
+    input[type=text], select {
+        background: #F5F5F5;
+        border: 1px solid #B5B5B5;
+        margin: 0px 3px;
+        padding: 5px 10px;
+    }
+    input[type=text]:hover,
+    input[type=text]:active, select {
+        border-color: #999999;
+    }
+    select {
+        min-width: 130px;
+    }
+
+/* BUTOANE */
+    input[type=submit], input[type=reset], button {
+        background-color: #ff9639;
+        cursor: pointer;
+        height: 40px;
+        padding: 10px;
+        text-align: center;
+        border: 0;
+        color: #FFFFFF;
+        font-weight: bold;
+        min-width: 70px;
+        font-size: 15px;
+        margin: 0 10px;
+
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    input[type=submit]:hover, input[type=reset]:hover, button:hover, button.hover {
+        background-color: #617EA1;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body {
+    background: rgba(255,255,255,.85);
+    padding-bottom: 40px;
+    position: relative;
+}
+
+.tab {
+    display: inline-block;
+    border: 1px solid #e4e4e4;
+    vertical-align: top;
+    position: relative;
+    margin: 20px auto;
+    background: #FFFFFF;
+}
+.tab,
+.tab > .title {
+    width: 400px;
+}
+
+.tab > .title {
+    background: #617EA1;
+    color: #FFFFFF;
+    padding: 5px;
+    text-transform: uppercase;
+    position: absolute;
+    top: -28px;
+    left: -1px;
+    text-align: center;
+}
+.tab > .title.loading {
+    background: url(../img/loadingSmall.gif) no-repeat #617EA1 5px 6px;
+}
+.tab > .title > .left { float: left; }
+.tab > .title > .right { float: right; }
+
+.remove {
+    background: url(../img/deleteIcon.png) no-repeat;
+}
+
+.open {
+    background: url(../img/read.png) no-repeat;
+}
+
+.exclude {
+    background: url(../img/excludeIcon.png) no-repeat;
+}
+
+.defaults {
+    background: url(../img/defaults.png) no-repeat;
+}
+
+.killProcess {
+    background: url(../img/killProcess.png) no-repeat;
+}
+
+/*#proiecte,
+#proiect {
+    height: 534px;
+}*/
+
+/* PROIECTE */
+    #proiecte {
+        width: 250px;
+        text-align: left;
+        background: #F2FAFF;
+    }
+    #proiecte,
+    #proiecte > .title {
+        width: 300px;
+    }
+
+/* PROIECT */
+    #proiect {
+        display: inline-block;
+        width: 840px;
+    }
+
+    #explorer,
+    #exclude {
+        height: 400px;
+    }
+
+    /* EXPLORER */
+        #explorer {
+            text-align: left;
+        }
+
+        /* BREADCRUMBS */
+            #explorer .breadcrumbs {
+                border-bottom: 1px solid #e4e4e4;
+                position: relative;
+                height: 22px;
+            }
+            #explorer .breadcrumbs .normal,
+            #explorer .breadcrumbs .edit {
+                margin-left: 20px;
+                display: block;
+            }
+            #explorer .breadcrumbs .toggleEdit {
+                background: url(../img/editIcon.png) no-repeat;
+                display: inline-block;
+                position: absolute;
+                top: 2px;
+                left: 2px;
+            }
+            
+            /* NORMAL */
+                #explorer .breadcrumbs.editMode .normal {
+                    display: none;
+                }
+                #explorer .breadcrumbs .normal {
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
+                #explorer .breadcrumbs .normal .dir {
+                    display: inline-block;
+                    background: #FF9639;
+                    color: #FFFFFF;
+                    padding: 2px 5px;
+                    cursor: pointer;
+                    border-right: 1px solid #FFFFFF;
+                }
+                #explorer .breadcrumbs .normal .dir:hover {
+                    background: #617ea1;
+                }
+
+            /* EDIT */
+                #explorer .breadcrumbs .edit {
+                    display: none;
+                }
+                #explorer .breadcrumbs.editMode .edit {
+                    display: block;
+                }
+                #explorer .breadcrumbs .edit input,
+                #explorer .breadcrumbs .edit button {
+                    font-size: 14px;
+                    padding: 1px 3px;
+                    height: 21px;
+                    min-width: 10px;
+                    margin: 0;
+                }
+                #explorer .breadcrumbs .edit input {
+                    width: 344px;
+                    background: transparent;
+                    border: 0;
+                    text-align: left;
+                }
+
+        /* LIST */
+            #proiecte .content,
+            #explorer .list {
+                padding: 5px;
+                height: 376px;
+                overflow: auto;
+            }
+            #proiecte .content {
+                height: 534px;
+            }
+            #proiecte .content .dir,
+            #explorer .list .dir {
+                display: block;
+                padding-left: 20px;
+                /*padding: 2px 0 2px 20px;*/
+                background: url(../img/dir.png) 1px 3px no-repeat;
+            }
+            #proiecte .content .dir.project {
+                background-image: url(../img/project.png);
+            }
+            #proiecte .content .dir.project.current {
+                background-color: #ff9639;
+                font-weight: bold;
+                color: #FFFFFF;
+            }
+            #proiecte .content .dir:hover,
+            #explorer .list .dir:hover {
+                font-weight: bold;
+                background-color: rgba(0,0,0,.05);
+            }
+            #proiecte .content .dirname,
+            #explorer .list .dirname {
+                cursor: pointer;
+                width: 90%;
+                padding: 2px 0;
+            }
+            #proiecte .content .dirname {
+                width: 86%;
+            }
+            #proiecte .content .dir .icon,
+            #explorer .list .dir .exclude {
+                display: none;
+                float: right;
+                opacity: .7;
+                margin-right: 2px;
+            }
+            #proiecte .content .dir:hover .icon,
+            #explorer .list .dir:hover .exclude {
+                display: block;
+            }
+            #proiecte .content .icon,
+            #explorer .list .icon {
+                margin-top: 2px;
+            }
+
+    /* EXCLUDE */
+        #exclude, #template {
+            margin-left: 20px;
+        }
+        #exclude textarea {
+            width: 100%;
+            height: 398px;
+            max-height: 398px;
+            border: 0px;
+            background: #FFF2F2;
+            padding: 5px;
+            resize: none;
+            margin: 0;
+        }
+
+    /* COMANDA */
+        /*#nume, #nume .title,*/
+        #comanda, #comanda .title {
+            width: 824px;
+        }
+        #nume input {
+            text-align: center;
+        }
+        #nume input,
+        #comanda input {
+            width: 99%;
+            background: transparent;
+            border: 0;
+        }
+        #comanda input {
+            width: 84%;
+            margin-right: 16%;
+            color: #535353;
+        }
+        #comanda button {
+            height: 28px;
+            padding: 0;
+            position: absolute;
+            right: -11px;
+            top: -1px;
+            padding: 0 10px;
+            text-transform: uppercase;
+            min-width: 10px;
+        }
+        #comanda button img {
+            display: none;
+        }
+        .generating #comanda button {
+            background: #FF1A1A;
+        }
+        .generating #comanda button img { display: block; }
+        .generating #comanda button span { display: none; }
+
+#dialog {
+    text-align: left;
+}
+
+/* LIVE STATS */
+    body.generating #liveStats {
+        display: block;
+    }
+    #liveStats {
+        display: none;
+        background: #000000;
+        background: rgba(0,0,0,.9);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 99999;
+        padding-top: 20px;
+    }
+    #liveStats > .tab {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    #liveStats > .tab > .content {
+        padding: 10px;
+    }
+    #liveStats #running .content,
+    #liveStats #serverLoad .content {
+        font-weight: bold;
+    }
+
+    #liveStats #running .killProcess {
+        margin-left: 7px;
+    }
+
+    #liveStats .tab,
+    #liveStats .tab > .title {
+        width: 262px;
+    }
+
+    #liveStats #phpdocLog,
+    #liveStats #phpdocLog > .title {
+        width: 814px;
+    }
+    #liveStats #phpdocLog .content {
+        height: 400px;
+        text-align: left;
+        overflow: hidden;
+    }
+
+    #liveStats #butonInchidere {
+        display: none;
+    }
+
+
