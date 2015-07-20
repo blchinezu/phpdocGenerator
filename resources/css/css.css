@@ -35,7 +35,7 @@
     div.paginaCentru {width:100%;text-align: center;}
 
 
-/* =================================== FONTURI =================================== */
+/* =================================== FONTS =================================== */
 
     @font-face {
         font-family: MyriadPro-Regular;
@@ -163,7 +163,7 @@ a:hover {
         min-width: 130px;
     }
 
-/* BUTOANE */
+/* BUTTON */
     input[type=submit], input[type=reset], button {
         background-color: #ff9639;
         cursor: pointer;

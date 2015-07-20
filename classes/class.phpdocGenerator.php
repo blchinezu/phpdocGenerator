@@ -12,13 +12,13 @@
 if( !class_exists('phpdocGenerator') ) {
 
 /**
- * Clasa folosita pentru generarea documentatiei cu phpdocumentor
+ * Class used for generating docs with phpdocumentor
  */
 class phpdocGenerator extends class_sql {
 
 
     /**
-     * Locatia in care se tine documentatia generata (Locatie absoluta din server)
+     * Path to the generated docs (absolute path from server)
      *
      * @var  string
      */
@@ -26,7 +26,7 @@ class phpdocGenerator extends class_sql {
 
 
     /**
-     * Locatia in care se tin logurile
+     * Path to logs
      *
      * @var  string
      */
@@ -34,7 +34,7 @@ class phpdocGenerator extends class_sql {
 
 
     /**
-     * Locatia in care se tine documentatia generata (URL)
+     * Path to the generated docs (URL)
      *
      * @var  string
      */
@@ -42,7 +42,7 @@ class phpdocGenerator extends class_sql {
 
 
     /**
-     * Folderul pentru care se face documentatia
+     * The scanned directory which contains the code
      *
      * @var  string
      */
@@ -50,7 +50,7 @@ class phpdocGenerator extends class_sql {
 
 
     /**
-     * Numele proiectului (se salveaza in baza de date)
+     * Project name (it's saved in the db)
      *
      * @var  string
      */
@@ -58,7 +58,7 @@ class phpdocGenerator extends class_sql {
 
 
     /**
-     * Folderul in care se salveaza documentatia
+     * Where to save the docs
      *
      * @var  string
      */
@@ -66,7 +66,7 @@ class phpdocGenerator extends class_sql {
 
 
     /**
-     * Foldere in care nu se poate genera documentatie
+     * Folders in which docs can't be generated
      *
      * @var  array
      */
@@ -74,7 +74,7 @@ class phpdocGenerator extends class_sql {
 
 
     /**
-     * Template-ul folosit
+     * Used template
      *
      * @var  string
      */
@@ -82,7 +82,7 @@ class phpdocGenerator extends class_sql {
 
 
     /**
-     * Template-uri posibile
+     * Possible templates
      *
      * @var  array
      */
@@ -100,7 +100,7 @@ class phpdocGenerator extends class_sql {
 
 
     /**
-     * Reguli de excludere
+     * Exclusion rules
      *
      * @var  array
      */
@@ -148,7 +148,7 @@ class phpdocGenerator extends class_sql {
 
 
     /**
-     * Tabela cu proiectele existente
+     * DB table containing existing projects
      *
      * @var  string
      */
@@ -156,7 +156,7 @@ class phpdocGenerator extends class_sql {
 
 
     /**
-     * Tine un obiect de tipul fileExplorer
+     * fileExplorer object
      *
      * @var  fileExplorer
      */
@@ -164,9 +164,9 @@ class phpdocGenerator extends class_sql {
 
 
     /**
-     * Constructor. Initializeaza obiect fileExplorer si apeleaza constructorul din class_sql.
+     * Init fileExplorer and call the class_sql construct
      *
-     * @param  mysql_connection  $sql_handle  Conexiune MySQL
+     * @param  mysql_connection  $sql_handle  MySQL connection
      */
     public function __construct() {
         parent::__construct();
@@ -174,7 +174,9 @@ class phpdocGenerator extends class_sql {
         $this->explorer = new fileExplorer( $this->phpdocRoot );
     }
 
-
+    /**
+     * Create the DB table if it doesn't exist
+     */
     private function createTableIfRequired() {
         $query = "
             CREATE TABLE IF NOT EXISTS ".$this->projectsDB." (
@@ -195,9 +197,9 @@ class phpdocGenerator extends class_sql {
 
 
     /**
-     * Formeaza comanda cu care se genereaza documentatia
+     * Generate the command used to generate docs
      *
-     * @return  string  Comanda de executat
+     * @return  string  Command
      */
     public function generateCommand() {
 
@@ -221,19 +223,19 @@ class phpdocGenerator extends class_sql {
         if( !is_array($this->exclude) )
             return 'Invalid excludes: "'.print_r($this->exclude, true).'"';
 
-        // Executabil
+        // Binary
         $cmd = PHPDOC_BINARY;
 
-        // Locatia programului pentru care se face documentatia
+        // Path to the code
         $cmd .= ' -d '.$this->explorer->escapePath($this->directory);
 
-        // Locatia in care se stocheaza documentatia
+        // Path to the future docs
         $cmd .= ' -t '.$this->explorer->escapePath($this->phpdocRoot.'/'.$this->target);
 
-        // Template-ul folosit
+        // Template
         $cmd .= ' --template='.$this->explorer->escapePath($this->template);
 
-        // Reguli de excludere
+        // Exclusion rules
         if( !empty($this->exclude) ) {
             // $cmd .= ' --ignore="'.implode(',', $this->exclude).'"';
             $cmd .= ' --ignore='.$this->explorer->escapePath(implode(',', $this->exclude));
@@ -241,7 +243,7 @@ class phpdocGenerator extends class_sql {
             // $cmd .= ' -i '.$this->explorer->escapePath(implode(',', $this->exclude));
         }
 
-        // Logheaza output-ul comenzii intr-o fila
+        // Log output to file
         $cmd .= ' >> '.$this->explorer->escapePath( $this->getLogFilePath() ).' 2>&1';
 
         return $cmd;
@@ -249,9 +251,9 @@ class phpdocGenerator extends class_sql {
 
 
     /**
-     * Salveaza un proiect in baza de date
+     * Save project to DB
      *
-     * @param  string  $cmd  Comanda cu care se genereaza proiectul
+     * @param  string  $cmd  Command used to generate the docs
      */
     public function saveProject($cmd) {
 
@@ -301,9 +303,9 @@ class phpdocGenerator extends class_sql {
     
 
     /**
-     * Genereaza documentatie
+     * Generate docs
      *
-     * @return  mixed  true (succes), false (nu s-a generat), string (eroare parametri)
+     * @return  mixed  true (success), false (not generated), string (params error)
      */
     public function generateDocumentation() {
         $cmd = $this->generateCommand();
@@ -324,9 +326,9 @@ class phpdocGenerator extends class_sql {
 
 
     /**
-     * Intoarce locatia filei in care se tine output-ul generarii
+     * Get log file path
      *
-     * @return  string  Locatie absoluta
+     * @return  string  Absolute path
      */
     public function getLogFilePath() {
         return $this->phpdocLogDir.'/'.$this->explorer->safeFilename($this->target).'.log';
@@ -334,13 +336,13 @@ class phpdocGenerator extends class_sql {
     
 
     /**
-     * Intoarce array de proiecte
+     * Get array of existing projects
      *
-     * @param  array   $select  Ce sa intoarce pentru fiecare proiect (id, name, from, template...)
-     * @param  string  $key     Cheia pe care sa o aiba proiectul
-     * @param  string  $where   String de conditii pentru query
+     * @param  array   $select  What to return for each project (id, name, from, template...)
+     * @param  string  $key     Project key
+     * @param  string  $where   Conditions for the search
      *
-     * @return  array  Proiecte
+     * @return  array  Projects
      */
     public function getSavedProjects( $select, $key = 'id', $where = '', $orderBy = '`to`' ) {
         $ret = array();
@@ -391,11 +393,11 @@ class phpdocGenerator extends class_sql {
     
 
     /**
-     * Intoarce proiecte existente in $this->phpdocRoot care nu-s salvate
+     * Get array of existing projects that are not present in the DB
      *
-     * @param  array  $except  Array de proiecte pe care sa nu le intoarca
+     * @param  array  $except  Array of ignored projects
      *
-     * @return  array  Proiecte
+     * @return  array  Projects
      */
     public function getAlienProjects( $except = array() ) {
         $ret = array();
@@ -433,11 +435,11 @@ class phpdocGenerator extends class_sql {
 
 
     /**
-     * Verifica daca un folder contine un proiect sau nu
+     * Check if a folder is a project
      *
-     * @param  string  $path  Locatia folder-ului
+     * @param  string  $path  Folder path
      *
-     * @return  boolean  true (daca e proiect), false (daca nu e proiect)
+     * @return  boolean  true (project), false (not project)
      */
     public function isProjectDir($path) {
 
@@ -453,24 +455,24 @@ class phpdocGenerator extends class_sql {
     
 
     /**
-     * Sterge folder-ul unui proiect
+     * Delete the folder of a project
      *
-     * @param  string   $relativePath  Locatia relativa a proiectului (relative de work/phpdocumentor/)
-     * @param  boolean  $preview       true (doar se afiseaza comenzile), false (executa comenzile de stergere)
+     * @param  string   $relativePath  Relative path (relative to the root of this app)
+     * @param  boolean  $preview       true (just show commands), false (actually delete)
      *
-     * @return  mixed   false (daca totul e in regula), string (daca a aparut o problema)
+     * @return  mixed   false (if ok), string (if there's a problem)
      */
     public function removeProjectFolder($relativePath, $preview = true) {
 
         if( $this->explorer->isAbsolutePath($relativePath) )
-            return 'Functia phpdocGenerator::removeProjectFolder() trebuie sa primeasca o locatie relativa!<br>S-a primit locatie absoluta:<br>'.$relativePath;
+            return 'phpdocGenerator::removeProjectFolder() has to receive a relative path!<br>Got an absolute path:<br>'.$relativePath;
 
         $this->explorer->cd($this->phpdocRoot);
 
         $path = $this->explorer->sanitizePath($relativePath);
 
         if( !$this->isProjectDir($path) )
-            return 'Folder-ul "'.$path.'" nu contine un proiect!';
+            return 'The folder "'.$path.'" doesn\'t contain a project!';
 
         $result = $this->explorer->rm($path, $preview);
 
@@ -478,19 +480,19 @@ class phpdocGenerator extends class_sql {
             return $result;
 
         if( !$result )
-            return 'Nu s-a putut sterge folder-ul:<br><br>"'.$path.'"!';
+            return 'Couldn\'t delete the folder:<br><br>"'.$path.'"!';
 
         return false;
     }
     
 
     /**
-     * Sterge un proiect (din baza de date + folder)
+     * Delete a project (DB + folder)
      *
-     * @param  integer  $id       ID-ul proiectului din baza de date
-     * @param  boolean  $preview  true (doar se afiseaza comenzile), false (executa comenzile de stergere)
+     * @param  integer  $id       DB project id
+     * @param  boolean  $preview  true (only show commands), false (actually delete)
      *
-     * @return  mixed   false (daca totul e in regula), string (daca a aparut o problema)
+     * @return  mixed   false (ok), string (if a problem occurred)
      */
     public function removeProject($id, $preview = true) {
 
@@ -525,9 +527,9 @@ class phpdocGenerator extends class_sql {
 
 
     /**
-     * Transforma numele de proiect in 'target'
+     * Transform the project name into 'target'
      *
-     * @param  strng  $name  Nume proiect
+     * @param  strng  $name  Project name
      *
      * @return  string  Target
      */

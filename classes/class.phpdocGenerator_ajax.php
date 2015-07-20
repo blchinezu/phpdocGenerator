@@ -12,13 +12,13 @@
 if( !class_exists('phpdocGenerator_ajax') ) {
 
 /**
- * Clasa care se ocupa de request-urile ajax
+ * Treat AJAX requests
  */
 class phpdocGenerator_ajax extends phpdocGenerator {
 
 
     /**
-     * Constructor. Lanseaza functia cu numele primit prin $_POST['func']
+     * Launch the method with the received name through $_POST['func']
      */
     public function __construct() {
         parent::__construct();
@@ -27,9 +27,9 @@ class phpdocGenerator_ajax extends phpdocGenerator {
 
 
     /**
-     * Afiseaza proiectele (si cele din baza de date si cele gasite in work/phpdocumentor/*)
+     * Show projects (normal + alien)
      *
-     * @return  string  HTML de afisat
+     * @return  string  HTML
      */
     protected function proiecte_get() {
 
@@ -71,9 +71,9 @@ class phpdocGenerator_ajax extends phpdocGenerator {
     
 
     /**
-     * Intoarce JSON cu detaliile proiectului din baza de date
+     * Return JSON containing the project details
      *
-     * @return  string  JSON cu detalii
+     * @return  string  JSON
      */
     protected function proiecte_loadSalvat() {
 
@@ -89,9 +89,9 @@ class phpdocGenerator_ajax extends phpdocGenerator {
 
 
     /**
-     * Transforma numele de proiect in 'target' (Locatia in care va fi stocat proiectul)
+     * Transform project name into 'target' (where'll the project be saved)
      *
-     * @return  strinf  Locatie
+     * @return  string  Path
      */
     protected function nume_getTarget() {
         return $this->name2target($_POST['target']);
@@ -99,9 +99,9 @@ class phpdocGenerator_ajax extends phpdocGenerator {
     
 
     /**
-     * Sterge proiect
+     * Delete project
      *
-     * @return  string  Rezultatul stergerii (succes sau nu)
+     * @return  string  Result (success or not)
      */
     protected function proiecte_remove() {
 
@@ -128,9 +128,9 @@ class phpdocGenerator_ajax extends phpdocGenerator {
     
 
     /**
-     * Afiseaza un anumit folder (breadcrumbs + continut)
+     * Show a certain folder (breadcrumbs + content)
      *
-     * @return  string  HTML de afisat
+     * @return  string  HTML
      */
     protected function explorer_loadDir() {
         
@@ -185,9 +185,9 @@ class phpdocGenerator_ajax extends phpdocGenerator {
     
 
     /**
-     * Intoarce filtrele implicite de excludere
+     * Return default exclusion filters
      *
-     * @return  string  Filtre de excludere
+     * @return  string  Filters
      */
     protected function exclude_defaults() {
         return implode("\n", $this->exclude);
@@ -195,13 +195,13 @@ class phpdocGenerator_ajax extends phpdocGenerator {
 
 
     /**
-     * Intoarce status pentru generarea in curs
-     *  - Timp
+     * Return status of the current process
+     *  - Time
      *  - Server Load
-     *  - Status Proces
-     *  - Output Generare
+     *  - Process Status
+     *  - Generator Output
      *
-     * @return  string  JSON cu informatii
+     * @return  string  JSON
      */
     protected function getAllStats() {
 
@@ -244,9 +244,9 @@ class phpdocGenerator_ajax extends phpdocGenerator {
 
 
     /**
-     * Opreste fortat procesul de generare a documentatiei
+     * Kill running process
      *
-     * @return  string  Rezultatul incercarii de a opri procesul
+     * @return  string  Result
      */
     protected function forceStopPhpdoc() {
 
@@ -287,11 +287,11 @@ class phpdocGenerator_ajax extends phpdocGenerator {
 
 
     /**
-     * Genereaza documentatia
-     * - Seteaza variabilele primite prin POST
-     * - Lanseaza functia de generare
+     * Generate docs
+     * - Set vars received through POST
+     * - Launch generator
      *
-     * @return  string  Rezultatul generarii
+     * @return  string  Result
      */
     protected function genereazaDocumentatie() {
 
@@ -317,7 +317,7 @@ class phpdocGenerator_ajax extends phpdocGenerator {
     
 
     /**
-     * Seteaza variabilele clasei cu valorile primite prin POST
+     * Set class vars with values received through POST
      */
     protected function seteazaVariabileDinPOST() {
 
@@ -338,9 +338,9 @@ class phpdocGenerator_ajax extends phpdocGenerator {
     
 
     /**
-     * Genereaza comanda de executat
+     * Generate command
      *
-     * @return  string  Comanda de executat pentru generarea documentatiei
+     * @return  string  Command
      */
     protected function genereazaPreviewComanda() {
 

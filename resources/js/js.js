@@ -32,7 +32,7 @@
         explorer_loadDir( $("#explorer .breadcrumbs .edit input").val() );
     }
 
-// PROIECTE
+// PROJECTS
     function testNumeProiect() {
 
         var matches = $("#proiecte .project .target").filter(function(){
@@ -177,7 +177,7 @@
         genereazaPreviewComanda();
     }
 
-// GENEREAZA COMANDA
+// GENERATE COMMAND
     window.gpc_ht = false;
     window.gpc_ha = false;
     function genereazaPreviewComanda(delay) {
@@ -210,7 +210,7 @@
         }, delay);
     }
 
-// NUME
+// NAME
     window.ngt_ht = false;
     window.ngt_ha = false;
     function nume_getTarget(delay) {
@@ -241,7 +241,7 @@
         }, delay);
     }
 
-// GENEREAZA DOCUMENTATIE
+// GENERATE DOCS
     window.periodicStats = false;
     window.runPeriodicStats = false;
     function genereazaDocumentatie() {

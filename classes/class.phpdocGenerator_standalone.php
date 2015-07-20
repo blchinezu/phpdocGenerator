@@ -12,7 +12,7 @@
 if( !class_exists('phpdocGenerator_standalone') ) {
 
 /**
- * Main class
+ * Main page
  */
 class phpdocGenerator_standalone {
 
@@ -27,7 +27,7 @@ class phpdocGenerator_standalone {
 
 
     /**
-     * Processing part
+     * Processing part (useless)
      */
     protected function process() {
 
@@ -60,7 +60,7 @@ class phpdocGenerator_standalone {
 
 
     /**
-     * Return page body
+     * 
      *
      * @return  string  HTML
      */
@@ -144,7 +144,11 @@ class phpdocGenerator_standalone {
             ';
     }
 
-
+    /**
+     * Template options
+     *
+     * @return string HTML
+     */
     protected function templateOptions() {
         $ret = '';
 
@@ -158,7 +162,7 @@ class phpdocGenerator_standalone {
 
 
     /**
-     * Intoarce ultima parte din pagina
+     * Return page footer
      *
      * @return  string  HTML
      */
@@ -168,7 +172,7 @@ class phpdocGenerator_standalone {
     
 
     /**
-     * Intoarce HTML
+     * Show page
      *
      * @return  string  HTML
      */
