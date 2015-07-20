@@ -13,6 +13,6 @@ I **didn't test** it under a **Windows** machine.
 
 It's not perfect but it provides a decent interface for generating docs.
 
- - Translations: ./resources/translations.ini
- - Configuration: ./config.php
+ - Translations: [./resources/translations.ini](https://github.com/blchinezu/phpdocGenerator/blob/master/config.php)
+ - Configuration: [./config.php](https://github.com/blchinezu/phpdocGenerator/blob/master/resources/translations.ini)
 
