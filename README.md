@@ -14,3 +14,9 @@ It's not perfect but it provides a decent interface for generating docs.
 ![main](https://raw.githubusercontent.com/blchinezu/phpdocGenerator/master/screenshots/main.png)
 ![running](https://raw.githubusercontent.com/blchinezu/phpdocGenerator/master/screenshots/running.png)
 ![finished](https://raw.githubusercontent.com/blchinezu/phpdocGenerator/master/screenshots/finished.png)
+
+You can donate through PayPal at [brucelee.duckdns.org/donation/phpdocGenerator](http://brucelee.duckdns.org/donation/phpdocGenerator)
+
+    Since I can't directly add the PayPal donation button here, I've created a simple page
+    which has the Donate button.
+    
